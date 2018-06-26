@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!--CSS file-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>State of the World</title>
+</head>
+<body>
+    <!--nav bar-->
+    <nav class="navFlex">
+    </nav>
+
+    <!--title and description-->
+    <h1 id="mainTitle">State of the World</h1>
+    <h2 id="siteDescription">This app is here to help the citizens of Earth achieve a broader perspective on everything that is happening each day on Earth and the surrounding universe.</h2>
+
+    <!--Aside category flexbox that scrolls with page and allows user to jump ahead-->
+    <!--Should remain on top and horizontal when viewed on mobile device-->
+    
+    <!--Container for all data-->
+    <div class="container mainContainer">
+
+        <!--Container for CO2 data pulled from NASA API-->
+        <div class="container" id="carbonDataContainer">
+            <!--row for carbon dioxide data rate (in parts per million)-->
+            <div class="row" id="carbonData">
+            </div>
+            <!--row for carbon dioxide graph-->
+            <div class="row" id="carbonGraph">
+            </div>
+        </div>
+
+    </div>
+    
+<!--jQuery link-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--Javascript file-->
+<script src="assets/javascript/app.js"></script>
+</body>
+</html>
