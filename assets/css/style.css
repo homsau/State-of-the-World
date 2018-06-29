@@ -5,3 +5,14 @@
 #carbonDataContainer {
     background-color: rgb(83, 153, 83);
 }
+#news {
+    width: 100%;
+    display: flex;
+}
+.news {
+    width: 33.33%;
+    text-align: center;
+}
+.news img {
+    width: 200px;
+}
