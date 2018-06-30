@@ -35,3 +35,43 @@
     height: 300px;
     background-color: rgba(93, 214, 103, 0.8);
 }
+
+#countdown span {
+    float: left;
+    text-align: center;
+    font-size: 24px;
+    padding: 20px;
+    margin: 0 2.5%;
+    color: #fff;
+    width: 20%;
+    border-radius: 20px;
+    box-sizing: border-box;
+ }
+ 
+ #countdown span:nth-child(1) {
+    background: #26c2b9;
+ }
+ 
+ #countdown:after {
+    content: "";
+    display: block;
+    clear: both;
+ }
+ 
+ #countdownUnits {
+    float: left;
+    width: 25%;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+ }
+ 
+ span.turn {
+    animation: turn 0.7s ease forwards;
+ }
+ 
+ @keyframes turn {
+    0%{transform: rotateX(0deg)}
+    100%{transform: rotateX(360deg)}
+ }
+ 

@@ -139,7 +139,7 @@ $(document).ready(function(){
     }
     countdownLoad();
  
-        //$("#countdown").html(moment().format("Month day, year hours:minutes:seconds"));
+//TIMER ENDS AT START OF EVENT
 //Reset timer to subsequent event according to {UNKNOWN CALENDAR SOURCE} and moment()    
 
 });
