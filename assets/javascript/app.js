@@ -3,7 +3,7 @@ $(document).ready(function(){
     var carbonData;
     var carbonGraph;
     var co2URL = "http://www.hqcasanova.com/co2?callback=?";
-    var newsURL = "";
+    var newsURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     var image;
     var author;
     var title;
@@ -19,40 +19,58 @@ $(document).ready(function(){
         method: "GET"
     }).then(function(response) {
         var results = response.all;
-        //console.log(results);
+        console.log(response);
+        console.log(results);
+        //var title = $("<p>").text(results);
+        //$("#carbonData").append(title);
+        
+        var latest = $("<span>").text(response[0] + " ppm");            
+        $("#latest").append(latest);
+        
+        var yearly = $("<span>").text(response[10] + " ppm");
+        $("#yearly").append(yearly);
+
     }).fail(function(errorAjax) {
         console.log("Ajax Error " + errorAjax);
     });
-    newsURL = 'https://newsapi.org/v2/everything?q=' + 'Environment' + '&apiKey=2e2db0a043d34d749395b99000738b93';
 
-    $.ajax({
-        url: newsURL,
-        method: "GET"
-        })
-    .then(function(response) {
-        var results = response.articles;
-            
-        console.log(response);
-        console.log(response.articles);
+    $("#news-search").on("click",function(){
+        var search = $("#search").val();
+        newsURL += '?' + $.param({
+            'api-key': "bd4a830f78b54849a7803a662f876231",
+            'q': search
+        });
+        $.ajax({
+            url: newsURL,
+            method: 'GET',
+        }).then(function(result) {
+            var array = result.response.docs;
+            console.log(array);
+            console.log(result);
+        
+            for (var i = 0; i < 3; i++) {
 
-        for (var i = 0; i < 3; i++) {
-            var newsDiv = $("<div class='news'>");
-            image = $("<img class='img'>");
-            image.attr("src", results[i].urlToImage);
-            title = $("<p>").text(results[i].title);
-            author = $("<p>").text(results[i].author);
-            description = $("<p>").text(results[i].description);
+                var newsDiv = $(".news");
+                    newsDiv.attr("src", array[i].web_url);
+                var desc= $("<p>").text(array[i].snippet);
+                var title = $("<a>").text(array[i].headline.main);
+                var date = $("<p>").text(array[i].pub_date);
+                var url = $("<a>").text("here");
+                    url.attr("href",array[i].web_url);
+                //$(".news").css({"margin": "50px 20px 0px 20px",});
 
-            newsDiv.attr("src", results[i].url);
-            //console.log(results[i].title);
-            //console.log(results[i].url);
-            //console.log(results[i].urlToImage);
-            newsDiv.prepend(image);
-            newsDiv.append(title);
-            newsDiv.append(author);
-            newsDiv.append(description);
-        $("#news").append(newsDiv);
-        };
+                
+                title.attr("class","title")
+                title.attr("href",array[i].web_url);
+                newsDiv.append(title);
+                newsDiv.append(desc);
+                //newsDiv.append(url);
+                //newsDiv.append(date);
+                $("#news").append(newsDiv);
+            };
+        }).fail(function(err) {
+            throw err;
+        });
     });
 
     //=====================================================//
@@ -109,17 +127,17 @@ $(document).ready(function(){
             //var timer will be given the value of a function that updates the time values every second
             var timer = updateTimer(deadline);
             //These outputs will update every second according to updateTimer().
-            countdown.innerHTML = "<span>" + timer.days + "</span>"
-                                + "<span>" + timer.hours + "</span>"
-                                + "<span>" + timer.minutes + "</span>"
-                                + "<span>" + timer.seconds + "</span>";
+            countdown.innerHTML = "<span id='timerDays'>" + timer.days + "</span>"
+                                + "<span id='timerHours'>" + timer.hours + "</span>"
+                                + "<span id='timerMinutes'>" + timer.minutes + "</span>"
+                                + "<span id='timerSeconds'>" + timer.seconds + "</span>";
 
             //CAN I ADD CURLY BRACKETS AND CHANGE IT TO ===
             //Animations
             //The 4 numbers used in the countdown are referred to by index number and updated to give clock-like visuals
             var spans = countdown.getElementsByTagName("span");
             animateCountdown(spans[3]);
-            if(timer.seconds == 59) animateCountdown(spans[2]);
+            if (timer.seconds == 59) animateCountdown(spans[2]);
             if (timer.minutes == 59 && timer.seconds == 59) animateCountdown(spans[1]);
             if (timer.hours == 23 && timer.minutes == 59 && timer.seconds == 59) animate(spans[0]); 
             

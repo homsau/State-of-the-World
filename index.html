@@ -23,8 +23,10 @@
     </nav>
 
     <!--title and description-->
-    <h1 id="mainTitle">State of the World</h1>
-    <h2 id="siteDescription">This app is here to help the citizens of Earth achieve a broader perspective on everything that is happening each day on Earth and the surrounding universe.</h2>
+    <div class="jumbotron">
+        <h1 id="mainTitle">State of the World</h1>
+        <h3 class="description" id="siteDescription">This app is here to help the citizens of Earth achieve a broader perspective on everything that is happening each day on Earth and the surrounding universe.</h3>
+    </div>
 
     <!--Aside category flexbox that scrolls with page and allows user to jump ahead-->
     <!--Should remain on top and horizontal when viewed on mobile device-->
@@ -32,46 +34,60 @@
     
     <!--Container for all data-->
     <div class="container mainContainer">
+        
 
-<!--CO2 DATA-->
+    <!--CO2 DATA-->
         <!--Container for CO2 data pulled from NASA API-->
         <div class="container" id="carbonDataContainer">
-            <!--row for carbon dioxide data rate (in parts per million)-->
+            <h1 class="description">CO2 Measurement</h1>
+            <!--row for carbon dioxide data-->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Latest Measurement: <span id="latest"></span></h3>
+                    <h3>Yearly Measurement: <span id="yearly"></span></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                </div>
+                <div class="col-lg-6">
+                    <img src="assets/images/co2-graph.jpg" width="500px" style="max-width: 100%;">                    
+                </div>
+            </div>
             <div class="row" id="carbonData">
             </div>
-            <!--row for carbon dioxide graph-->
-            <div class="row" id="carbonGraph">
+        </div>
+    <!--SPACE EVENTS AND TIMERS-->
+        <div class="container" id="spaceEventContainer">
+            <h1 class="description">Space Events</h1>
+            <div class="row" id="testClock">
+                <!--Test clock-->
+                <div id="clock"></div>
+            </div>
+            <div class="row" id="spaceCountdown">
+                <!--Countdown to next space event-->
+                <div id="countdownEnd"></div>
+                <div id="countdown"></div>
+                <div id="countdownUnits">
+                    <span>Days</span>
+                    <span>Hours</span>
+                    <span>Minutes</span>
+                    <span>Seconds</span>
+                </div>
+            </div>
+            <div class="row">
+                <!--Space event article from NY Times API-->
+                <div id="spaceArticle"></div>
             </div>
         </div>
-
     </div>
 
-<!--WORLD NEWS-->
+    <!--WORLD NEWS-->
     <!--We should move both of these sections below into the main container and probably divide them with section tags-->
-    <div id="news"></div>
+    <div class="container" id="newsContainer">
+            <h1 class="description">World Events</h1>
+        <input id ="search"  type="text" placeholder="Search..">
+        <button id="news-search" type="submit">Submit</button>
+        <div class="news"></div>
 
-<!--SPACE EVENTS AND TIMERS-->
-    <div class="container" id="spaceEventContainer">
-        <div class="row sectionTitle">Space Events</div>
-        <div class="row" id="testClock">
-            <!--Test clock-->
-            <div id="clock"></div>
-        </div>
-        <div class="row" id="spaceCountdown">
-            <!--Countdown to next space event-->
-            <div id="countdownEnd"></div>
-            <div id="countdown"></div>
-            <div id="countdownUnits">
-                <span>Days</span>
-                <span>Hours</span>
-                <span>Minutes</span>
-                <span>Seconds</span>
-            </div>
-        </div>
-        <div class="row">
-            <!--Space event article from NY Times API-->
-            <div id="spaceArticle"></div>
-        </div>
     </div>
 </body>
 </html>
