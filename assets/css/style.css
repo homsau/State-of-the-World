@@ -1,5 +1,12 @@
+.jumbotron {
+    margin: 0 40px 40px;
+    text-align: center;
+}
 .mainContainer {
     background-color: pink;
+}
+.description {
+    text-align: center;
 }
 
 /*==============CO2 DATA==============*/
@@ -10,14 +17,14 @@
 
 /*==============WORLD NEWS==============*/
 
-#news {
-    width: 100%;
-    display: flex;
+/#news {
+/    width: 100%;
+/    display: flex;
 }
-.news {
-    width: 33.33%;
-    text-align: center;
-}
+/.news {
+/    width: 33.33%;
+/    text-align: center;
+/}
 .news img {
     width: 200px;
 }
@@ -71,7 +78,6 @@
  }
  
  @keyframes turn {
-    0%{transform: rotateX(0deg)}
     100%{transform: rotateX(360deg)}
  }
  
