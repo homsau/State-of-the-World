@@ -36,68 +36,59 @@ $(document).ready(function(){
 
     $(document).ready(function(){
     
-
         var search = "Top News";
 
-    $("#news-search").on("click",function(){
-        var search = $("#search").val();
+        $("#news-search").on("click",function(){
+            var search = $("#search").val();
 
-        newsURL += '?' + $.param({
-            'api-key': "bd4a830f78b54849a7803a662f876231",
-            'q': search
-        });
-        $.ajax({
-            url: newsURL,
-            method: 'GET',
-        }).then(function(result) {
-            var array = result.response.docs;
-            console.log(array);
-            console.log(result);
+            newsURL += '?' + $.param({
+                'api-key': "bd4a830f78b54849a7803a662f876231",
+                'q': search
+            });
+            $.ajax({
+                url: newsURL,
+                method: 'GET',
+            }).then(function(result) {
+                var array = result.response.docs;
+                console.log(array);
+                console.log(result);
         
-            for (var i = 0; i < 3; i++) {
+                for (var i = 0; i < 3; i++) {
 
-                var newsDiv = $(".news");
-                    newsDiv.attr("src", array[i].web_url);
-                var desc= $("<p>").text(array[i].snippet);
-                var title = $("<a>").text(array[i].headline.main);
-                var date = $("<p>").text(array[i].pub_date);
-                var url = $("<a>").text("here");
-                    url.attr("href",array[i].web_url);
+                    var newsDiv = $(".news");
+                        newsDiv.attr("src", array[i].web_url);
+                    var desc= $("<p>").text(array[i].snippet);
+                    var title = $("<a>").text(array[i].headline.main);
+                    var date = $("<p>").text(array[i].pub_date);
+                    var url = $("<a>").text("here");
+                        url.attr("href",array[i].web_url);
 
                     console.log(url);
 
+                    //$(".news").css({"margin": "50px 20px 0px 20px",});
+                    title.attr("class","title")
+                    title.attr("href",array[i].web_url);
+                    newsDiv.append(title);
+                    newsDiv.append(desc);
 
-                //$(".news").css({"margin": "50px 20px 0px 20px",});
+                    newsDiv.append(url);
+                    newsDiv.append(date);
+                    $("#news").append(newsDiv);
+                };
+                console.log(search);
+            }).fail(function(err) {
+                throw err;
+            });
+            // $("#news-search").on("click",function(event){
+            // event.preventDefault();
+            // var search = $("#search").val();
+            // $("#news-search").val("");
 
-                
 
-                title.attr("class","title")
-                title.attr("href",array[i].web_url);
-                newsDiv.append(title);
-                newsDiv.append(desc);
-
-                newsDiv.append(url);
-                newsDiv.append(date);
-                $("#news").append(newsDiv);
-            };
-            console.log(search);
-        }).fail(function(err) {
-            throw err;
-        });
-        //$("#news-search").on("click",function(event){
-         //   event.preventDefault();
-         //   var search = $("#search").val();
-        //$("#news-search").val("");
-    });
-
-                //newsDiv.append(url);
-                //newsDiv.append(date);
-                $("#news").append(newsDiv);
-            };
-        }).fail(function(err) {
-            throw err;
-        });
-
+            // newsDiv.append(url);
+            // newsDiv.append(date);
+            // $("#news").append(newsDiv);
+         });
     });
 
     //=====================================================//
