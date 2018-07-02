@@ -53,7 +53,6 @@
     
     <!--Container for all data-->
     <div class="container mainContainer">
-        
 
     <!--CO2 DATA-->
         <!--Container for CO2 data pulled from NASA API-->
@@ -76,22 +75,31 @@
             </div>
         </div>
     <!--SPACE EVENTS AND TIMERS-->
-    <div id="spaceAnchor" style= "position: relative; top: -40px;" /></div>
+        <div id="spaceAnchor" style= "position: relative; top: -40px;" /></div>
         <div class="container" id="spaceEventContainer">
             <h1 class="description">Space Events</h1>
             <div class="row" id="testClock">
                 <!--Test clock-->
-                <div id="clock"></div>
+                <!--<div id="clock"></div>-->
             </div>
             <div class="row" id="spaceCountdown">
                 <!--Countdown to next space event-->
-                <div id="countdownEnd"></div>
-                <div id="countdown"></div>
-                <div id="countdownUnits">
-                    <span>Days</span>
-                    <span>Hours</span>
-                    <span>Minutes</span>
-                    <span>Seconds</span>
+                <div class="col-lg-6 col-md-12" id="counterDiv">
+                    <!--<div id="countdownEnd"></div>-->
+                    <div id="countdownUnits">
+                        <span>Days:</span>
+                        <span>Hours:</span>
+                        <span>Minutes:</span>
+                        <span>Seconds:</span>
+                    </div>
+                    <div id="countdownUnitsMobile">
+                        <span>D:</span>
+                        <span>H:</span>
+                        <span>M:</span>
+                        <span>S:</span>
+                    </div>
+                    <div id="countdown"></div>
+                    <div class="col-lg-6 col-md-12" id=""></div>
                 </div>
             </div>
             <div class="row">
