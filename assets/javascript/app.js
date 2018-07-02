@@ -7,10 +7,47 @@ $(document).ready(function(){
     var image;
     var author;
     var title;
+    var search = "Top News";
     
     ///Possible Others: //NOAA: 
                 //Data Use Terms: ftp://aftp.cmdl.noaa.gov/data/trace_gases/co2/flask/surface/co2_mlo_surface-flask_1_ccgg_event.txt
                 //Index of Data in form of folders: "ftp://aftp.cmdl.noaa.gov/data/"
+
+    //=====================================================//
+    //                        NAVBAR                       //
+    //=====================================================//
+    //$(document).ready(function(){
+    // Add scrollspy to <body>
+    //$("body").scrollspy({target: ".navbar", offset: 40});   
+
+    // Add smooth scrolling on all links inside the navbar
+    /*$("#myNavbar a").on("click", function(event) {
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+                var hash = this.hash;
+
+                $("html, body").animate({
+                    scrollTop: $(hash).offset().top
+                }, 1000, function(){
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            }
+        });
+    });*/
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (event) {
+            event.preventDefault();
+    
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    });
 
     //Ajax Call to retrieve climate NASA Carbon Dioxide Data
     $.getJSON ({
@@ -33,17 +70,12 @@ $(document).ready(function(){
         console.log("Ajax Error " + errorAjax);
     });
 
-
     $(document).ready(function(){
-    
-        var search = "Top News";
-
-        $("#news-search").on("click",function(){
-            var search = $("#search").val();
-
+        
+        function newsAjax() {
             newsURL += '?' + $.param({
-                'api-key': "bd4a830f78b54849a7803a662f876231",
-                'q': search
+            'api-key': "bd4a830f78b54849a7803a662f876231",
+            'q': search
             });
             $.ajax({
                 url: newsURL,
@@ -55,40 +87,37 @@ $(document).ready(function(){
         
                 for (var i = 0; i < 3; i++) {
 
-                    var newsDiv = $(".news");
-                        newsDiv.attr("src", array[i].web_url);
+                    var newsDiv = $(".news").attr("src", array[i].web_url);
                     var desc= $("<p>").text(array[i].snippet);
                     var title = $("<a>").text(array[i].headline.main);
                     var date = $("<p>").text(array[i].pub_date);
                     var url = $("<a>").text("here");
                         url.attr("href",array[i].web_url);
+                        //console.log(url);
 
-                    console.log(url);
-
-                    //$(".news").css({"margin": "50px 20px 0px 20px",});
                     title.attr("class","title")
                     title.attr("href",array[i].web_url);
                     newsDiv.append(title);
                     newsDiv.append(desc);
-
-                    newsDiv.append(url);
-                    newsDiv.append(date);
+                    //newsDiv.append(url);
+                    //newsDiv.append(date);
                     $("#news").append(newsDiv);
                 };
                 console.log(search);
             }).fail(function(err) {
                 throw err;
             });
-            // $("#news-search").on("click",function(event){
-            // event.preventDefault();
-            // var search = $("#search").val();
-            // $("#news-search").val("");
-
-
-            // newsDiv.append(url);
-            // newsDiv.append(date);
-            // $("#news").append(newsDiv);
-         });
+        };
+        newsAjax();
+        
+        $("#news-search").on("click",function(event){
+            event.preventDefault();
+            
+            $(".news").html("");
+            $("#news-search").val();
+            search = $("#search").val();
+            newsAjax();
+        });
     });
 
     //=====================================================//
