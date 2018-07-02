@@ -33,10 +33,15 @@ $(document).ready(function(){
         console.log("Ajax Error " + errorAjax);
     });
 
+
     $(document).ready(function(){
     
 
         var search = "Top News";
+
+    $("#news-search").on("click",function(){
+        var search = $("#search").val();
+
         newsURL += '?' + $.param({
             'api-key': "bd4a830f78b54849a7803a662f876231",
             'q': search
@@ -58,12 +63,19 @@ $(document).ready(function(){
                 var date = $("<p>").text(array[i].pub_date);
                 var url = $("<a>").text("here");
                     url.attr("href",array[i].web_url);
+
                     console.log(url);
+
+
+                //$(".news").css({"margin": "50px 20px 0px 20px",});
+
+                
 
                 title.attr("class","title")
                 title.attr("href",array[i].web_url);
                 newsDiv.append(title);
                 newsDiv.append(desc);
+
                 newsDiv.append(url);
                 newsDiv.append(date);
                 $("#news").append(newsDiv);
@@ -72,11 +84,20 @@ $(document).ready(function(){
         }).fail(function(err) {
             throw err;
         });
-        $("#news-search").on("click",function(event){
-            event.preventDefault();
-            var search = $("#search").val();
-        $("#news-search").val("");
+        //$("#news-search").on("click",function(event){
+         //   event.preventDefault();
+         //   var search = $("#search").val();
+        //$("#news-search").val("");
     });
+
+                //newsDiv.append(url);
+                //newsDiv.append(date);
+                $("#news").append(newsDiv);
+            };
+        }).fail(function(err) {
+            throw err;
+        });
+
     });
 
     //=====================================================//
@@ -193,17 +214,17 @@ $(document).ready(function(){
             //var timer will be given the value of a function that updates the time values every second
             var timer = updateTimer(deadline);
             //These outputs will update every second according to updateTimer().
-            countdown.innerHTML = "<span>" + timer.days + "</span>"
-                                + "<span>" + timer.hours + "</span>"
-                                + "<span>" + timer.minutes + "</span>"
-                                + "<span>" + timer.seconds + "</span>";
+            countdown.innerHTML = "<span id='timerDays'>" + timer.days + "</span>"
+                                + "<span id='timerHours'>" + timer.hours + "</span>"
+                                + "<span id='timerMinutes'>" + timer.minutes + "</span>"
+                                + "<span id='timerSeconds'>" + timer.seconds + "</span>";
 
             //CAN I ADD CURLY BRACKETS AND CHANGE IT TO ===
             //Animations
             //The 4 numbers used in the countdown are referred to by index number and updated to give clock-like visuals
             var spans = countdown.getElementsByTagName("span");
             animateCountdown(spans[3]);
-            if(timer.seconds == 59) animateCountdown(spans[2]);
+            if (timer.seconds == 59) animateCountdown(spans[2]);
             if (timer.minutes == 59 && timer.seconds == 59) animateCountdown(spans[1]);
             if (timer.hours == 23 && timer.minutes == 59 && timer.seconds == 59) animate(spans[0]); 
             
