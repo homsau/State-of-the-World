@@ -1,21 +1,57 @@
 .jumbotron {
-    margin: 0 40px 40px;
+    margin: 40px 40px 40px;
     text-align: center;
 }
 .mainContainer {
-    background-color: pink;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.container {
+    max-width: 100%;
 }
 .description {
     text-align: center;
 }
 
+/*================Menu================*/
+.navFlex {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #003366;
+    z-index: 10;
+    height: 40px;
+}
+.navFlex .nav {
+    margin: 0 auto;
+}
+.navFlex a {
+    color: #fff;
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
+}
+.navFlex a:hover {
+    color: #ccc;
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
+}
+h1 {
+    margin-bottom: 40px;
+}
+
 /*==============CO2 DATA==============*/
 
 #carbonDataContainer {
-    background-color: rgb(83, 153, 83);
+    border: solid 3px #ccc;
+    border-radius: 5px;
+    padding: 40px;
+    margin-bottom: 40px;
+    max-width: 1140px ;
 }
 
-/*==============WORLD NEWS==============*/
+/*=============WORLD NEWS=============*/
 
 /#news {
 /    width: 100%;
@@ -32,9 +68,14 @@
 /*======STARGAZING EVENTS AND TIMERS======*/
 
 #spaceEventContainer {
-    width: 900px;
-    height: 400px;
-    background-color: rgb(214, 214, 93);
+    color: #fff;
+    padding: 40px;
+    margin-bottom: 40px;
+    background-image: url("../images/space-bg.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: cover;
 }
 
 #spaceCountdown {
@@ -51,7 +92,7 @@
     margin: 0 2.5%;
     color: #fff;
     width: 20%;
-    border-radius: 20px;
+    border-radius: 5px;
     box-sizing: border-box;
  }
  
@@ -80,5 +121,13 @@
  @keyframes turn {
     100%{transform: rotateX(360deg)}
  }
- 
+
+ /*==============NEWS===============*/
+ #newsContainer {
+    border: solid 3px #ccc;
+    border-radius: 5px;
+    padding: 40px;
+    margin-bottom: 40px;
+    max-width: 1140px;
+}
  

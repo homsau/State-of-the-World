@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--CSS file-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!--jQuery link-->
@@ -21,10 +23,25 @@
 </head>
 <body>
     <!--nav bar-->
-    <nav class="navFlex">
+    <nav class="navbar navFlex" id="myNavbar">
+         <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="#top">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#carbonAnchor">CO2 levels</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#spaceAnchor">Space Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#newsAnchor">News</a>
+            </li>
+        </ul>
     </nav>
 
     <!--title and description-->
+    <div id="top" style= "position: relative; top: -40px;" /></div>
     <div class="jumbotron">
         <h1 id="mainTitle">State of the World</h1>
         <h3 class="description" id="siteDescription">This app is here to help the citizens of Earth achieve a broader perspective on everything that is happening each day on Earth and the surrounding universe.</h3>
@@ -40,6 +57,7 @@
 
     <!--CO2 DATA-->
         <!--Container for CO2 data pulled from NASA API-->
+        <div id="carbonAnchor" style= "position: relative; top: -40px;" /></div>
         <div class="container" id="carbonDataContainer">
             <h1 class="description">CO2 Measurement</h1>
             <!--row for carbon dioxide data-->
@@ -58,6 +76,7 @@
             </div>
         </div>
     <!--SPACE EVENTS AND TIMERS-->
+    <div id="spaceAnchor" style= "position: relative; top: -40px;" /></div>
         <div class="container" id="spaceEventContainer">
             <h1 class="description">Space Events</h1>
             <div class="row" id="testClock">
@@ -81,21 +100,24 @@
             </div>
         </div>
 
-        <iframe src="https://calendar.google.com/calendar/embed?src=nytimes.com_89ai4ijpb733gt28rg21d2c2ek%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-    </div>
+        <!--<iframe src="https://calendar.google.com/calendar/embed?src=nytimes.com_89ai4ijpb733gt28rg21d2c2ek%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        -->
+
 
     <!--WORLD NEWS-->
     <!--We should move both of these sections below into the main container and probably divide them with section tags-->
-    <div class="container" id="newsContainer">
-            <h1 class="description">World Events</h1>
+        <div id="newsAnchor" style= "position: relative; top: -40px;" /></div>
+        <div class="container" id="newsContainer">
+                <h1 class="description">World Events</h1>
 
-            <form>
-                <input id ="search"  type="text" placeholder="Search...">
-                <button id="news-search" type="submit">Submit</button>
-            </form>
+                <form>
+                    <input id ="search"  type="text" placeholder="Search...">
+                    <button id="news-search" type="submit">Submit</button>
+                </form>
 
-        <div class="news"></div>
+            <div class="news"></div>
 
+        </div>
     </div>
 </body>
 </html>
