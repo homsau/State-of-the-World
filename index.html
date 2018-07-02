@@ -14,6 +14,8 @@
     <script src="assets/javascript/app.js"></script>
     <!--Moment-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <!--Google Calendar API-->
+    <script src="https://apis.google.com/js/api.js"></script>
     
     <title>State of the World</title>
 </head>
@@ -78,14 +80,23 @@
                 <div id="spaceArticle"></div>
             </div>
         </div>
+
+        <iframe src="https://calendar.google.com/calendar/embed?src=nytimes.com_89ai4ijpb733gt28rg21d2c2ek%40group.calendar.google.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
     </div>
 
     <!--WORLD NEWS-->
     <!--We should move both of these sections below into the main container and probably divide them with section tags-->
     <div class="container" id="newsContainer">
             <h1 class="description">World Events</h1>
+
+            <form>
+                <input id ="search"  type="text" placeholder="Search...">
+                <button id="news-search" type="submit">Submit</button>
+            </form>
+
         <input id ="search"  type="text" placeholder="Search..">
         <button id="news-search" type="submit">Submit</button>
+
         <div class="news"></div>
 
     </div>

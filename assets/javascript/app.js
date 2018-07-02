@@ -8,8 +8,7 @@ $(document).ready(function(){
     var author;
     var title;
     
-        ///Possible Others:
-            //NOAA: 
+    ///Possible Others: //NOAA: 
                 //Data Use Terms: ftp://aftp.cmdl.noaa.gov/data/trace_gases/co2/flask/surface/co2_mlo_surface-flask_1_ccgg_event.txt
                 //Index of Data in form of folders: "ftp://aftp.cmdl.noaa.gov/data/"
 
@@ -34,8 +33,15 @@ $(document).ready(function(){
         console.log("Ajax Error " + errorAjax);
     });
 
+
+    $(document).ready(function(){
+    
+
+        var search = "Top News";
+
     $("#news-search").on("click",function(){
         var search = $("#search").val();
+
         newsURL += '?' + $.param({
             'api-key': "bd4a830f78b54849a7803a662f876231",
             'q': search
@@ -57,13 +63,33 @@ $(document).ready(function(){
                 var date = $("<p>").text(array[i].pub_date);
                 var url = $("<a>").text("here");
                     url.attr("href",array[i].web_url);
+
+                    console.log(url);
+
+
                 //$(".news").css({"margin": "50px 20px 0px 20px",});
 
                 
+
                 title.attr("class","title")
                 title.attr("href",array[i].web_url);
                 newsDiv.append(title);
                 newsDiv.append(desc);
+
+                newsDiv.append(url);
+                newsDiv.append(date);
+                $("#news").append(newsDiv);
+            };
+            console.log(search);
+        }).fail(function(err) {
+            throw err;
+        });
+        //$("#news-search").on("click",function(event){
+         //   event.preventDefault();
+         //   var search = $("#search").val();
+        //$("#news-search").val("");
+    });
+
                 //newsDiv.append(url);
                 //newsDiv.append(date);
                 $("#news").append(newsDiv);
@@ -71,12 +97,13 @@ $(document).ready(function(){
         }).fail(function(err) {
             throw err;
         });
+
     });
 
     //=====================================================//
     //           STARGAZING EVENTS AND TIMERS              //
     //=====================================================//
-    //Clock displays current time and updates every second
+    //Test clock displays current time and updates every second
     function setClock() {
         setInterval (function() {
             $("#clock").html(moment().format("hh:mm:ss A"))
@@ -85,11 +112,71 @@ $(document).ready(function(){
     setClock();
 
     //var currentTime = moment();
-    var deadline;
+    var deadline; 
     var dateEvent;
     var countdown;
-    //var difference = moment().diff(moment(dateEvent, "Month day, year hours:minutes:seconds"));
-    var spaceCalendar = "https://calendar.google.com/calendar/embed?src=nytimes.com_89ai4ijpb733gt28rg21d2c2ek%40group.calendar.google.com&ctz=America%2FNew_York";
+//    var calendarURL = "https://www.googleapis.com/calendar/v3/calendars/" + calendarId + "/events";
+    var calendarId = "nytimes.com_89ai4ijpb733gt28rg21d2c2ek@group.calendar.google.com"
+    var calendarAPI = 'AIzaSyD9Acwa6prtm9uMcRWWXzh8RkxJdl74_NM';
+//    var calendarClientId = '249858206713-7q9afsf3r25lec5ikcqc8f8qv2f9ijn8.apps.googleusercontent.com';
+//    var calendarDiscoveryDocs = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+//    var calendarScopes = "https://www.googleapis.com/auth/calendar.readonly";
+   // /embed?src=nytimes.com_89ai4ijpb733gt28rg21d2c2ek%40group.calendar.google.com&ctz=America%2FNew_York";
+    var spaceArticleURL; 
+
+    $.ajax({
+        url:"https://www.googleapis.com/calendar/v3/calendars/" + calendarId + "/events?key=" + calendarAPI,
+        success: function(data) {
+          console.log(data);
+        }
+    });
+
+/*    
+
+ //Param ("orderBy", "StartTime")
+    //param("singleEvents", true)
+    //OR 
+    //.items[] which returns all events in list (appears to be an array of an object). Must also be consistently updating metdata.
+    //$("#calendarResults")
+
+    calendarURL += '?' + $.param ({
+        "key=API_key" : "AIzaSyD9Acwa6prtm9uMcRWWXzh8RkxJdl74_NM"
+    });
+
+    $.ajax ({
+        url: calendarURL,
+        method: "GET"
+    }).then(function(response) {
+        var eventList = response.items;
+        var discoveryDoc = response.discovery.apis.getRest;
+
+        console.log(response);
+        console.log(eventList);
+        console.log(discoveryDoc);
+    });
+*/
+/*
+    function start() {
+        // 2. Initialize the JavaScript client library.
+        gapi.client.init({
+          'apiKey': 'AIzaSyD9Acwa6prtm9uMcRWWXzh8RkxJdl74_NM',
+          // Your API key will be automatically added to the Discovery Document URLs.
+          'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'],
+        }).then(function() {
+          // 3. Initialize and make the API request.
+          return gapi.client.people.people.get({
+            'resourceName': 'people/me',
+            'requestMask.includeField': 'person.names'
+          });
+        }).then(function(response) {
+          console.log(response.result);
+        }, function(reason) {
+          console.log('Error: ' + reason.result.error.message);
+        });
+      };
+      // 1. Load the JavaScript client library.
+      gapi.load('client', start);
+*/
    
     function updateTimer(deadline){
         //var time is the difference between the deadline of the event and the newDate()
@@ -146,12 +233,14 @@ $(document).ready(function(){
                 clearInterval(timerInterval);
                 countdown.innerHTML = "<span>0</span><span>0</span><span>0</span><span>0</span>";
                 $("#countdownEnd").text("This event is TODAY!!! Don't miss out!");
-            } //INSERT CALLBACK FOR 24 HR INTERVAL, LEADS TO function newCountdown() which will pull the new latest event from the NYT API and reset the countdown.
+            } //INSERT CALLBACK FOR 24 HR INTERVAL, LEADS TO function countdownLoad() 
+            //which will .getTime() from the latest event from the NYT API and reset the countdown.
       }, 1000);
     }
 
     //Upon the page loading, set the deadline time and date, and start the timer
     function countdownLoad() {
+        //update deadline as the next available event date
         deadline = new Date("July 27, 2018 17:00:00");
         startTimer("countdown", deadline);
     }
@@ -159,5 +248,7 @@ $(document).ready(function(){
  
 //TIMER ENDS AT START OF EVENT
 //Reset timer to subsequent event according to {UNKNOWN CALENDAR SOURCE} and moment()    
+
+
 
 });
