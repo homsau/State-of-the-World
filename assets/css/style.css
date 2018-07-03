@@ -70,7 +70,7 @@ h1 {
 #spaceEventContainer {
 	color: #fff;
 	padding: 40px;
-	margin-bottom: 40px;
+	margin-bottom: 0px;
 	background-image: url("../images/space-bg.jpg");
 	background-attachment: fixed;
 	background-repeat: no-repeat;
@@ -144,7 +144,34 @@ h1 {
 @keyframes turn {
 	100%{transform: rotateX(360deg)}
 }
-
+#space-timer-second-column {
+    padding: 40px !important;
+}
+#spaceArticleContainer {
+	margin-bottom: 40px;
+    max-width: 100%;
+    background: #f1f1f1;
+}
+#spaceArticleContainer .row {
+    max-width: 1140px;
+    margin: auto;
+}
+#spaceArticleContainer .row #spaceArticle {
+    padding: 40px;
+}
+#spaceArticleContainer .row #spaceArticleImage {
+    padding: 0;
+}
+.spaceEventsImage img {
+    width: 100%;
+}
+.spaceEvents > h1 {
+    margin-bottom: 20px;
+}
+.g-graphic-calendar-item-summary {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
 /*==============NEWS===============*/
 #newsContainer {
 	border: solid 3px #ccc;
