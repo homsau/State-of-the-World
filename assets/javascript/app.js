@@ -9,6 +9,42 @@ $(document).ready(function(){
     var title;
     var search = "Top News";
     
+    /*var dateVar = "2010-10-30";
+    var dsplit = dateVar.split("-");
+    var d = new Date(dsplit[0],dsplit[1]-1,dsplit[2]);
+    console.log(dateVar);
+    console.log(dsplit);
+    console.log(d);
+    var eventDate = "Starting July 12";
+    var slicedDate = eventDate.slice(9);
+    console.log(slicedDate);*/
+
+    //boolean startsWith(String prefix, int offset)
+
+    /* TESTING */
+    /* public class RegionMatchesDemo {
+    public static void main(String[] args) {
+        String searchMe = "Green Eggs and Ham";
+        String findMe = "Eggs";
+        int searchMeLength = searchMe.length();
+        int findMeLength = findMe.length();
+        boolean foundIt = false;
+        for (int i = 0; 
+             i <= (searchMeLength - findMeLength);
+             i++) {
+           if (searchMe.regionMatches(i, findMe, 0, findMeLength)) {
+              foundIt = true;
+              System.out.println(searchMe.substring(i, i + findMeLength));
+              break;
+           }
+        }
+        if (!foundIt)
+            System.out.println("No match found.");
+    }
+}
+*/
+
+
     ///Possible Others: //NOAA: 
                 //Data Use Terms: ftp://aftp.cmdl.noaa.gov/data/trace_gases/co2/flask/surface/co2_mlo_surface-flask_1_ccgg_event.txt
                 //Index of Data in form of folders: "ftp://aftp.cmdl.noaa.gov/data/"
@@ -33,7 +69,9 @@ $(document).ready(function(){
         method: "GET"
     }).then(function(response) {
         var results = response.all;
+        console.log("co2 response");
         console.log(response);
+        console.log("co2 results"); 
         console.log(results);
         //var title = $("<p>").text(results);
         //$("#carbonData").append(title);
@@ -59,7 +97,9 @@ $(document).ready(function(){
                 method: 'GET',
             }).then(function(result) {
                 var array = result.response.docs;
+                console.log("news search array");
                 console.log(array);
+                console.log("news search result");
                 console.log(result);
 
                 for (var i = 0; i < 3; i++) {
@@ -96,6 +136,7 @@ $(document).ready(function(){
             $("#news-search").val();
             search = $("#search").val();
             newsAjax();
+            console.log("search term");
             console.log(search);
         });
         
@@ -128,21 +169,22 @@ $(document).ready(function(){
     $.ajax({
         url:"https://www.googleapis.com/calendar/v3/calendars/" + calendarId + "/events?key=" + calendarAPI,
         success: function(data) {
-          console.log(data);
-          //var skyEvent = data.description;
-          //console.log(skyEvent);
-          //$("#skyEvent").text(skyEvent);
+            console.log("stargazing data");
+            console.log(data);
+            //var skyEvent = data.description;
+            //console.log(skyEvent);
+            //$("#skyEvent").text(skyEvent);
         }
     });
     $.getJSON('http://allorigins.me/get?url=https%3A//www.nytimes.com/interactive/2018/science/astronomy-space-calendar.html&callback=?', function(data){
 	        //console.log(data.contents);
             var recent = $(data.contents).find('.g-graphic-calendar-item');
-            var imgData =$(data.contents).find('img');
-            var dateData =$(data.contents).find('h1');
-            var titleData=$(data.contents).find('.g-graphic-calendar-item-summary');
-            var textData=$(data.contents).find('p');
+            var imgData = $(data.contents).find('img');
+            var dateData = $(data.contents).find('h1');
+            var titleData = $(data.contents).find('.g-graphic-calendar-item-summary');
+            var textData = $(data.contents).find('p');
 
-            var recentSpace = $("<div class = 'spaceEvents'>");
+            var recentSpace = $("<div class = 'spaceEventsTitle'>");
             var recentSpaceImage = $("<div class = 'spaceEventsImage'>");
             var imageSpace = $("<img>");
 
@@ -159,9 +201,7 @@ $(document).ready(function(){
             console.log(titleData[0]);
             console.log(textData[2]);
             $("#spaceArticleImage").append(recentSpaceImage);
-            $("#spaceArticle").append(recentSpace);
-            
-
+            $("#spaceArticleTitle").append(recentSpace);
             });
 
 /*    
