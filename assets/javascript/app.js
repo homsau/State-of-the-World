@@ -16,28 +16,6 @@ $(document).ready(function(){
     //=====================================================//
     //                        NAVBAR                       //
     //=====================================================//
-    //$(document).ready(function(){
-    // Add scrollspy to <body>
-    //$("body").scrollspy({target: ".navbar", offset: 40});   
-
-    // Add smooth scrolling on all links inside the navbar
-    /*$("#myNavbar a").on("click", function(event) {
-        // Make sure this.hash has a value before overriding default behavior
-        if (this.hash !== "") {
-            // Prevent default anchor click behavior
-            event.preventDefault();
-
-                var hash = this.hash;
-
-                $("html, body").animate({
-                    scrollTop: $(hash).offset().top
-                }, 1000, function(){
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
-                });
-            }
-        });
-    });*/
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (event) {
             event.preventDefault();
@@ -71,7 +49,6 @@ $(document).ready(function(){
     });
 
     $(document).ready(function(){
-        
         function newsAjax() {
             newsURL += '?' + $.param({
             'api-key': "bd4a830f78b54849a7803a662f876231",
@@ -84,32 +61,34 @@ $(document).ready(function(){
                 var array = result.response.docs;
                 console.log(array);
                 console.log(result);
-        
+
                 for (var i = 0; i < 3; i++) {
 
                     var newsDiv = $(".news").attr("src", array[i].web_url);
+                    var title = $("<p>").text(array[i].headline.main);
                     var desc= $("<p>").text(array[i].snippet);
-                    var title = $("<a>").text(array[i].headline.main);
-                    var date = $("<p>").text(array[i].pub_date);
-                    var url = $("<a>").text("here");
-                        url.attr("href",array[i].web_url);
+                    var dateConverted = moment(array[i].pub_date).format("LLL");
+                    var date = $("<p>").text(dateConverted);
+                    var urlGrab = $("<a>").text("Read Article").attr("href",array[i].web_url);
+                    var url = $("<p>").html(urlGrab);
                         //console.log(url);
+                    //var img = $("p").text(array[i].multimedia.url);
+                    //console.log(img);
 
                     title.attr("class","title")
                     title.attr("href",array[i].web_url);
                     newsDiv.append(title);
                     newsDiv.append(desc);
-                    //newsDiv.append(url);
-                    //newsDiv.append(date);
-                    $("#news").append(newsDiv);
+                    newsDiv.append(url);
+                    newsDiv.append(date);
+                    //$("#news").append(newsDiv);
                 };
-                console.log(search);
             }).fail(function(err) {
                 throw err;
             });
         };
         newsAjax();
-        
+
         $("#news-search").on("click",function(event){
             event.preventDefault();
             
@@ -117,7 +96,9 @@ $(document).ready(function(){
             $("#news-search").val();
             search = $("#search").val();
             newsAjax();
+            console.log(search);
         });
+        
     });
 
     //=====================================================//
@@ -148,8 +129,40 @@ $(document).ready(function(){
         url:"https://www.googleapis.com/calendar/v3/calendars/" + calendarId + "/events?key=" + calendarAPI,
         success: function(data) {
           console.log(data);
+          //var skyEvent = data.description;
+          //console.log(skyEvent);
+          //$("#skyEvent").text(skyEvent);
         }
     });
+    $.getJSON('http://allorigins.me/get?url=https%3A//www.nytimes.com/interactive/2018/science/astronomy-space-calendar.html&callback=?', function(data){
+	        //console.log(data.contents);
+            var recent = $(data.contents).find('.g-graphic-calendar-item');
+            var imgData =$(data.contents).find('img');
+            var dateData =$(data.contents).find('h1');
+            var titleData=$(data.contents).find('.g-graphic-calendar-item-summary');
+            var textData=$(data.contents).find('p');
+
+            var recentSpace = $("<div class = 'spaceEvents'>");
+            var recentSpaceImage = $("<div class = 'spaceEventsImage'>");
+            var imageSpace = $("<img>");
+
+            imageSpace.attr("src", imgData[0].src);
+            
+            recentSpaceImage.append(imageSpace);
+            recentSpace.append(dateData[1]);
+            recentSpace.append(titleData[0]);
+            recentSpace.append(textData[2]);
+            
+            console.log(recent[0]);
+            console.log(imgData[0].src);
+            console.log(dateData[1]);
+            console.log(titleData[0]);
+            console.log(textData[2]);
+            $("#spaceArticleImage").append(recentSpaceImage);
+            $("#spaceArticle").append(recentSpace);
+            
+
+            });
 
 /*    
 
@@ -246,7 +259,7 @@ $(document).ready(function(){
             animateCountdown(spans[3]);
             if (timer.seconds == 59) animateCountdown(spans[2]);
             if (timer.minutes == 59 && timer.seconds == 59) animateCountdown(spans[1]);
-            if (timer.hours == 23 && timer.minutes == 59 && timer.seconds == 59) animate(spans[0]); 
+            if (timer.hours == 23 && timer.minutes == 59 && timer.seconds == 59) animateCountdown(spans[0]); 
             
             //When the countdown finishes, all spans will display 0, and a special message about the day's event will display.
             if (timer.total < 1) {
