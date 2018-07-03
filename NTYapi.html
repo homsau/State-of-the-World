@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <head>
+
+    </head>
+    <body>
+        <div class="topnav">
+            <input id ="search"  type="text" placeholder="Search..">
+            <button id="hi"></button>
+        </div>
+        <div id="derp"></div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+        <script type="text/javascript">
+
+        $("#hi").on("click",function(){
+
+            var search = $("#search").val();
+            var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+            url += '?' + $.param({
+            'api-key': "bd4a830f78b54849a7803a662f876231",
+            'q': search,
+            });
+            $.ajax({
+            url: url,
+            method: 'GET',
+            }).done(function(result) {
+            var array = result.response.docs;
+            console.log(array);
+            console.log(result);
+            
+            for (var i = 0; i < array.length; i++) {
+
+                var newsDiv = $("<div class='news'>");
+                    
+                var desc= $("<p>").text(array[i].snippet);
+
+                var title = $("<a>").text(array[i].headline.main);
+                
+
+                var date = $("<p>").text(array[i].pub_date);
+
+                var url = $("<a>").text("here");
+
+
+                url.attr("href",array[i].web_url);
+                $(".news").css({"margin": "50px 20px 0px 20px",});
+
+                newsDiv.attr("src", array[i].web_url);
+                title.attr("class","title")
+                title.attr("href",array[i].web_url);
+                newsDiv.prepend(title);
+                newsDiv.append(desc);
+                newsDiv.append(url);
+                newsDiv.prepend(date);
+                $("#derp").prepend(newsDiv);
+            
+            
+            };
+            }).fail(function(err) {
+            throw err;
+            });
+        });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <head>
+
+    </head>
+    <body>
+        <div style="border-color:black; border-style:solid; border-width:2px; width:800px; height:600px; float:left;">
+
+        <div style="width:300px;height:200px">
+            <h1 id="0" ></h1>
+            <h2 id="date"></h2>
+            <h3 id="10"></h3>
+            <img src="graph.gif" style="width:300px;height:200px;">
+
+
+        </div>
+
+
+
+        
+        <p style="float:right; height:400px; width:200px;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sodales facilisis aliquet. Mauris mi nisl, viverra non diam at, cursus maximus tortor. Cras libero ipsum, cursus ac nisi sit amet, efficitur sagittis sapien. Donec congue leo vel velit volutpat, ac volutpat leo hendrerit. Nulla et malesuada risus, et faucibus nisi. Cras eu auctor arcu, ac sagittis mauris. Proin eget purus at dolor facilisis gravida. Cras id tempus tellus, non commodo libero.
+        </p>
+
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+                //Variables: NASA Carbon Dioxide Data
+                var carbonData;
+                var carbonGraph;
+                var queryURL = "http://www.hqcasanova.com/co2?callback=?";
+                
+                    ///Possible Others:
+                        //NOAA: 
+                            //Data Use Terms: ftp://aftp.cmdl.noaa.gov/data/trace_gases/co2/flask/surface/co2_mlo_surface-flask_1_ccgg_event.txt
+                            //Index of Data in form of folders: "ftp://aftp.cmdl.noaa.gov/data/"
+
+                //Ajax Call to retrieve climate NASA Carbon Dioxide Data
+                $.getJSON ({
+                    url: queryURL,
+                    method: "GET"
+                })
+                .then(function(response) {
+                    var results = response.all;
+                    console.log(response);
+                    console.log(results);
+                    var title = $("<p>").text(results);
+                    $("#derp").append(title);
+                    
+                
+                    var latest = $("<p>").text(response[0] + " ppm");
+                    
+                    $("#0").append(latest);
+                    
+                    
+                    var year = $("<p>").text(response.date);
+                    $("#date").append(year);
+
+                    var date = $("<p>").text(response[10] + " ppm");
+                    $("#10").append(date);
+                    
+                }).fail(function(errorAjax) {
+                    console.log("Ajax Error " + errorAjax);
+                });
+            });
+        </script>
+    </body>
+</html>

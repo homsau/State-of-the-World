@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <head>
+
+    </head>
+    <body>
+        
+        <div id="RecentNews"></div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+        <script type="text/javascript">
+            $.getJSON('http://allorigins.me/get?url=https%3A//www.nytimes.com/interactive/2018/science/astronomy-space-calendar.html&callback=?', function(data){
+	        //console.log(data.contents);
+            var recent = $(data.contents).find('.g-graphic-calendar-item');
+            var imgData =$(data.contents).find('img');
+            var dateData =$(data.contents).find('h1');
+            var titleData=$(data.contents).find('.g-graphic-calendar-item-summary');
+            var textData=$(data.contents).find('p');
+
+            var recentSpace = $("<div class = 'spaceEvents'>");
+            var imageSpace = $("<img>");
+
+            imageSpace.attr("src", imgData[0].src);
+            
+            recentSpace.append(imageSpace);
+            recentSpace.append(dateData[1]);
+            recentSpace.append(titleData[0]);
+            recentSpace.append(textData[2]);
+            
+            
+            
+
+
+            console.log(recent[0]);
+            console.log(imgData[0].src);
+            console.log(dateData[1]);
+            console.log(titleData[0]);
+            console.log(textData[2]);
+            $("#derp").append(recentSpace);
+            
+
+            });
+        
+        </script>
+    </body>
+</html>
