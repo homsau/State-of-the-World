@@ -26,19 +26,19 @@
     <nav class="navbar navFlex" id="myNavbar">
         <ul class="nav justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" href="index.html#top">Home</a>
+                <a class="nav-link" href="#top">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="index.html#carbonAnchor">CO2 levels</a>
+                <a class="nav-link" href="#carbonAnchor">CO2 levels</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html#spaceAnchor">Space Events</a>
+                <a class="nav-link" href="#spaceAnchor">Space Events</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html#newsAnchor">News</a>
-           </li>
-           <li class="nav-item">
-               <a class="nav-link" href="interact.html">Quiz</a>
+                <a class="nav-link" href="#newsAnchor">News</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="interact.html">Space Facts</a>
             </li>
         </ul>
     </nav>
@@ -65,9 +65,10 @@
             <!--row for carbon dioxide data-->
             <div class="row">
                 <div class="col-lg-6">
-                    <h3>Latest Measurement: <span id="latest"></span></h3>
-                    <h3>Yearly Measurement: <span id="yearly"></span></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h3>Latest Measurement: <span id="latest"></h3>
+                    <h3>Yearly Measurement: <span id="yearly"></h3>
+                    <p>This up-to-date measurement of carbon dioxide particles refers to the number of CO2 particles present within a sample of one million atmospheric particles. The graph displays the Earth's climate trends according to CO2 measurements taken from various sources around and below the Earth's surface. The most significant changes in Earth's long-term climate have come as a result of the Industrial Revolution and the increased burning of fossil fuels to produce energy. Carbon dioxide and other greenhouse gases contribute to the "greenhouse"-like heating effect on Earth.</p>
+                    <p>Methane is a prominent greenhouse gas with a ppm rate that is four times higher than that of the carbon dioxide rate. For more information, visit <link to Vitao Signs or Trends?></p>
 
                 </div>
                 <div class="col-lg-6">
@@ -81,11 +82,8 @@
         <div id="spaceAnchor" style= "position: relative; top: -40px;" /></div>
         <div class="container" id="spaceEventContainer">
             <h1 class="description">Space Events</h1>
-            <div class="row" id="testClock">
-                <!--Test clock-->
-                <!--<div id="clock"></div>-->
-            </div>
             <div class="row" id="spaceCountdown">
+                <h2 id="spaceCash" style="text-align: center; display: none"></h2>
                 <!--Countdown to next space event-->
                 <div class="col-lg-6 col-md-12" id="counterDiv">
                     <!--<div id="countdownEnd"></div>-->
@@ -102,20 +100,17 @@
                         <span>Mins:</span>
                         <span>Secs:</span>
                     </div>
-                    <div id="countdown"></div>
+                    <div id="countdown">
+                        <span class="days"></span>
+                        <span class="hours"></span>
+                        <span class="minutes"></span>
+                        <span class="seconds"></span>
+                    </div>
                 </div>
                 <div class="col-lg-6 col-md-12" id="space-timer-second-column">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <div id="spaceArticleImage"></div>
+                    <div id="spaceArticleText"></div>
                 </div>
-            </div>
-        </div>
-
-        <div class="container" id="spaceArticleContainer">
-            <div class="row">
-                <!--Space event article from NY Times API-->
-                <div class="col-lg-6 col-md-12" id="spaceArticleImage"></div>
-                
-                <div class="col-lg-6 col-md-12" id="spaceArticle"></div>
             </div>
         </div>
 
@@ -125,7 +120,7 @@
         <div class="container" id="newsContainer">
                 <h1 class="description">World Events</h1>
 
-                <form>
+                <form style="text-align: center; margin-bottom: 40px;">
                     <input id ="search"  type="text" placeholder="Search...">
                     <button id="news-search" type="submit">Submit</button>
                 </form>
