@@ -2,6 +2,8 @@
 	margin: 40px auto;
 	text-align: center;
 	max-width: 1140px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 }
 .mainContainer {
 	width: 100% !important;
@@ -155,7 +157,7 @@ h1 {
 	background: #551a8b;
 }
 
-#countdown:after {
+/*#countdown:after {
 	content: "";
 	display: block;
 	clear: both;
@@ -167,7 +169,7 @@ h1 {
 
 @keyframes turn {
 	100%{transform: rotateX(360deg)}
-}
+}*/
 #spaceArticleImage {
 	padding: 0;
 }

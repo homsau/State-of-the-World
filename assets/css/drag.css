@@ -1,120 +1,120 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
-	text-align:center;
-	color:white;
-
-	/* The image used */
-	background-image: url("../images/background.jpg");
-
-	/* Create the parallax scrolling effect */
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-body > div {
-	max-width: 1140px;
-	margin: auto;
-}
-.jumbotron {
-  background-color: rgba(255,255,255,0.75);
-	color: #000;
-}
-.dropzone, .drop, .drop1, .drop2, .drop3, .drop7 {
+	font-family: Arial, Helvetica, sans-serif;
+	  text-align:center;
+	  color:white;
+  
+	  /* The image used */
+	  background-image: url("../images/background.jpg");
+  
+	  /* Create the parallax scrolling effect */
+	  background-attachment: fixed;
+	  background-position: center;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+  }
+  body > div {
+	  max-width: 1140px;
+	  margin: auto;
+  }
+  .jumbotron {
 	background-color: rgba(255,255,255,0.75);
-	color:#000;
-	border: dashed 4px transparent;
-	border-radius: 4px;
-	margin: 10px auto 30px auto;
-	padding: 10px;
-	transition: background-color 0.3s;
-	width: 800px;
-	max-width: 100%;
-	padding: 10px;
-	height: 140px;
-}
-.drop6, .drop6a, .drop6b, .drop6c {
-background-color: white;
-color:black;
-border: dashed 4px transparent;
-border-radius: 4px;
-margin: 10px auto 30px auto;
-padding: 10px;
-transition: background-color 0.3s;
-
-width: 50%;
-padding: 10px;
-height: 140px;
-}
-.drop4, .drop4a, .drop4b {
-	border-radius: 50px;
-	width: 30px;
-	height: 30px;
-	background: red;
-	border: solid 2px transparent;
-}
-.drop4 {
-	position: absolute;
-	left:850px;
-	top:370px;
-}
-.drop4a {
-	position: absolute;
-	left:50px;
-	bottom:250px;
-}
-.drop4b {
-	position: absolute;
-	left:170px;
-	top:120px;
-}
-.drop-active {
-	border-color: #aaa;	
-}
-.drop-target {
-	background-color: rgb(82, 152, 199);
-	border-color: #fff;
-	border-style: solid;
-}
-.drag-drop {
-	display: inline-block;
-	min-width: 40px;
-	padding: 2em 0.5em;
-	color: #fff;
-	border: solid 2px #fff;
-
-	-webkit-transform: translate(0px, 0px);
-	transform: translate(0px, 0px);
-
-	transition: background-color 0.3s;
-}
-
-.can-drop {
-	color: #000;
-}
-h1 {
-	text-align:center;
-}
-.answer, .answer1, .answer2, .answer3, .answer6, .answer6a, .answer6b, .answer6c, .answer7 {
-	display: inline-block;
-	min-width: 40px;
-	padding: 1em;
-	margin:	0 10px;
-	color: #fff;
-	border: solid 2px #fff;
-	border-radius: 5px;
-	background-color: rgb(9, 11, 112);
-	line-height: 20px;
-}
-.answer4 {
-	display: inline-block;
-	position: relative;
-	z-index: 1;
-	min-width: 10px;
-	color: #fff;
-	background-color: aqua;
-	border-radius: 50px;
-	width: 20px;
-	height: 20px;
-	left: -20px;
-}
+	  color: #000;
+  }
+  .dropzone, .drop, .drop1, .drop2, .drop3, .drop7 {
+	  background-color: rgba(255,255,255,0.75);
+	  color:#000;
+	  border: dashed 4px transparent;
+	  border-radius: 4px;
+	  margin: 10px auto 30px auto;
+	  padding: 10px;
+	  transition: background-color 0.3s;
+	  width: 800px;
+	  max-width: 100%;
+	  padding: 10px;
+	  height: 140px;
+  }
+  .drop6, .drop6a, .drop6b, .drop6c {
+  background-color: white;
+  color:black;
+  border: dashed 4px transparent;
+  border-radius: 4px;
+  margin: 10px auto 30px auto;
+  padding: 10px;
+  transition: background-color 0.3s;
+  
+  width: 50%;
+  padding: 10px;
+  height: 140px;
+  }
+  .drop4, .drop4a, .drop4b {
+	  border-radius: 50px;
+	  width: 30px;
+	  height: 30px;
+	  background: red;
+	  border: solid 2px transparent;
+  }
+  .drop4 {
+	  position: absolute;
+	  left: 485px;
+	  top:370px;
+  }
+  .drop4a {
+	  position: absolute;
+	  left: 75px;
+	  bottom:250px;
+  }
+  .drop4b {
+	  position: absolute;
+	  left:170px;
+	  top:120px;
+  }
+  .drop-active {
+	  border-color: #aaa;	
+  }
+  .drop-target {
+	  background-color: rgb(82, 152, 199);
+	  border-color: #fff;
+	  border-style: solid;
+  }
+  .drag-drop {
+	  display: inline-block;
+	  min-width: 40px;
+	  padding: 2em 0.5em;
+	  color: #fff;
+	  border: solid 2px #fff;
+  
+	  -webkit-transform: translate(0px, 0px);
+	  transform: translate(0px, 0px);
+  
+	  transition: background-color 0.3s;
+  }
+  
+  .can-drop {
+	  color: #000;
+  }
+  h1 {
+	  text-align:center;
+  }
+  .answer, .answer1, .answer2, .answer3, .answer6, .answer6a, .answer6b, .answer6c, .answer7 {
+	  display: inline-block;
+	  min-width: 40px;
+	  padding: 1em;
+	  margin:	0 10px;
+	  color: #fff;
+	  border: solid 2px #fff;
+	  border-radius: 5px;
+	  background-color: rgb(9, 11, 112);
+	  line-height: 20px;
+  }
+  .answer4 {
+	  display: inline-block;
+	  position: relative;
+	  z-index: 1;
+	  min-width: 10px;
+	  color: #fff;
+	  background-color: aqua;
+	  border-radius: 50px;
+	  width: 20px;
+	  height: 20px;
+	  left: -20px;
+  }

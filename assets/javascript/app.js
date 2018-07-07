@@ -117,13 +117,6 @@ $(document).ready(function(){
     var calendarId = "nytimes.com_89ai4ijpb733gt28rg21d2c2ek@group.calendar.google.com"
     var calendarAPI = 'AIzaSyD9Acwa6prtm9uMcRWWXzh8RkxJdl74_NM';
 
-    $.ajax({
-        url:"https://www.googleapis.com/calendar/v3/calendars/" + calendarId + "/events?key=" + calendarAPI,
-        success: function(data) {
-            //console.log("stargazing data");
-            //console.log(data);
-        }
-    });
     $.getJSON('http://allorigins.me/get?url=https%3A//www.nytimes.com/interactive/2018/science/astronomy-space-calendar.html&callback=?', function(data){
         //console.log(data.contents);
         var recent = $(data.contents).find('.g-graphic-calendar-item');
@@ -152,6 +145,10 @@ $(document).ready(function(){
         $("#spaceArticleTitle").append(recentSpace);
     });
    
+
+    //===========================================//
+    //        STARGAZING EVENTS/TIMER            //
+    //===========================================//
     function getTimeRemaining(endtime){
         var t = Date.parse(endtime) - Date.parse(new Date());
         var seconds = Math.floor( (t/1000) % 60 );
@@ -242,18 +239,18 @@ $(document).ready(function(){
     //When this function is called, it grabs the span elements and gives them the class "turn".
     //This function allows the elements then recieve that class's animations (turning) for 700 milliseconds.
     //After 700 milliseconds, the class and its animations are removed from the span element.
-    function animateCountdown(span) {
+    /*function animateCountdown(span) {
         span.className = "turn";
         //This setTimeout will remove the class "turn" after 700 milliseconds, because the turn animation will last 300 milliseconds.
         setTimeout(function() {
             span.className = "";
         }, 700); 
-    }
+    }*/
 
     //The 4 numbers used in the countdown are referred to by index number and updated to give clock-like visuals
-    /*var spans = countdown.getElementsByTagName("span");
+    /*var spans = countdown.getElementsByTagName(".countdown");
     animateCountdown(spans[3]);
     if (t.seconds == 59) animateCountdown(spans[2]);
     if (t.minutes == 59 && t.seconds == 59) animateCountdown(spans[1]);
-    if (t.hours == 23 && t.minutes == 59 && t.seconds == 59) animateCountdown(spans[0]); */
+    if (t.hours == 23 && t.minutes == 59 && t.seconds == 59) animateCountdown(spans[0]);*/
 });
