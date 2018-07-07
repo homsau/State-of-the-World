@@ -104,18 +104,11 @@ $(document).ready(function(){
             //console.log("search term");
             //console.log(search);
         });
-        
     });
 
     //===========================================//
     //           STARGAZING ARTICLES             //
     //===========================================//
-
-    var deadline; 
-    var dateEvent;
-    var countdown;
-    var calendarId = "nytimes.com_89ai4ijpb733gt28rg21d2c2ek@group.calendar.google.com"
-    var calendarAPI = 'AIzaSyD9Acwa6prtm9uMcRWWXzh8RkxJdl74_NM';
 
     $.getJSON('http://allorigins.me/get?url=https%3A//www.nytimes.com/interactive/2018/science/astronomy-space-calendar.html&callback=?', function(data){
         //console.log(data.contents);
@@ -180,7 +173,6 @@ $(document).ready(function(){
                 //console.log("initializeCountdown: Timer reached 0");
             }
         }
-    
         updateCountdown(); // run function once at first to avoid delay
         var timeinterval = setInterval(updateCountdown, 1000);
     }
