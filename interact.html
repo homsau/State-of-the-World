@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--CSS file-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/drag.css">
+    <!--jQuery link-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--Javascript files-->
+    <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/drag.js"></script>
+    <!--Moment-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs@1.3.4/dist/interact.min.js"></script>
+
+    </head>
+
+    <body class="parallax">
+        
+        <h1 style="margin-bottom:100px;">Questions</h1>
+
+        <div id= "question1">
+            <h2>1. What galaxy sits closest to the Milky Way?</h2>
+
+            <div id= "answer1a" class="draggable answer">Andromeda Galaxy</div>
+            <div id= "answer1b" class="draggable answer">Sagittarius Dwarf Elliptical Galaxy</div>
+            <div id= "answer1c" class="draggable answer correct">Canis Major Dwarf Galaxy</div>
+            <div id= "answer1d" class="draggable answer">Segue 1</div>
+
+        
+            <div id="outer-dropzone" class="drop">
+                Submit Answers Here!
+            </div>
+        </div>
+
+        <div id="question2">
+            <h2>2. What two elements make up the majority of a star?</h2>
+
+            <div id= "answer2a" class="draggable answer1">Carbon</div>
+            <div id= "answer2b" class="draggable answer1 correct">Hydrogen</div>
+            <div id= "answer2c" class="draggable answer1 correct">Helium</div>
+            <div id= "answer2d" class="draggable answer1">Uranium</div>
+            <div id= "answer2e" class="draggable answer1">Oxygen</div>
+            <div id= "answer2f" class="draggable answer1">Nitrogen</div>
+
+            <div id="outer-dropzone" class="drop1">
+                Submit Answers Here!
+            </div>
+        </div>
+        <div id="question3">
+            <h2>3. Which of these four planets are considered gas giants?</h2>
+
+            <div id= "answer3a" class="draggable answer2">Mercury</div>
+            <div id= "answer3b" class="draggable answer2">Venus</div>
+            <div id= "answer3c" class="draggable answer2">Mars</div>
+            <div id= "answer3d" class="draggable answer2">Earth</div>
+            <div id= "answer3e" class="draggable answer2 correct">Saturn</div>
+            <div id= "answer3f" class="draggable answer2 correct">Jupiter</div>
+            <div id= "answer3g" class="draggable answer2 correct">Uranus</div>
+            <div id= "answer3h" class="draggable answer2 correct">Neptune</div>
+
+            <div id="outer-dropzone" class="drop2">
+                Submit Answers Here!
+            </div>
+        </div>
+        <div id="question4">
+            <h2>4. What is a star’s last phase before it goes supernova?</h2>
+
+            <div id= "answer4a" class="draggable answer3 correct">Red Giant</div>
+            <div id= "answer4b" class="draggable answer3">White Dwarf</div>
+            <div id= "answer4c" class="draggable answer3">White Giant</div>
+            <div id= "answer4d" class="draggable answer3">Red Dwarf</div>
+
+            <div id="outer-dropzone" class="drop3">
+                Submit Answers Here!
+            </div>
+        </div>
+        <div id="question5">
+            <h2>5. In which part of the Milky Way does our solar system sit? (Drag the blue box into one of the red squares)</h2>
+            <div id="reply"></div>
+            <div id= "movingImage" style="position:relative;">
+                <div id= "answer5a" class="draggable answer4 correct" style="color:aqua;"></div>
+                <img src="assets/images/milky.jpg" style="width: 500px; height:500px; position:relative;">
+                <div id="outer-dropzone" class="drop4">
+                <div id="outer-dropzone" class="drop4a">
+                <div id="outer-dropzone" class="drop4b">
+            </div>
+                
+            </div>
+        </div>
+        <div id="question6">
+        
+            <h2>6. Match the planets to the their features (Drag the planets to their descriptions).</h2>
+
+            <div id= "answer6a" class="draggable answer6 a">Mercury</div>
+            <div id= "answer6b" class="draggable answer6 b">Saturn</div>
+            <div id= "answer6c" class="draggable answer6 c">Uranus</div>
+            <div id= "answer6d" class="draggable answer6 d">Jupiter</div>
+            
+            <div id="outer-dropzone" class="drop6">
+                This planet had horizontal rings!
+            </div>
+            
+            <div id="outer-dropzone" class="drop6a">
+                This planet had vertical rings!
+            </div>
+            
+            <div id="outer-dropzone" class="drop6b">
+                This planet has a great Red Spot!
+            </div>
+            
+            <div id="outer-dropzone" class="drop6c">
+                This planet has fozen poles!
+            </div>
+        </div>
+
+        </div>
+        <div id="question8">
+            <h2>7. What is the heaviest element that can be made within a star before it explodes with the energy of an octillion (10^27) atomic bombs? </h2>
+
+            <div id= "answer8a" class="draggable answer7">Titanium</div>
+            <div id= "answer8b" class="draggable answer7 correct">Iron</div>
+            <div id= "answer8c" class="draggable answer7">Copper</div>
+            <div id= "answer8d" class="draggable answer7">Nickel</div>
+
+            <div id="outer-dropzone" class="drop7">
+                    Submit Answers Here!
+            </div>
+        </div>
+    </body>
+</html>

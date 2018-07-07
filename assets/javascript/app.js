@@ -3,7 +3,7 @@ $(document).ready(function(){
     var carbonData;
     var carbonGraph;
     var co2URL = "http://www.hqcasanova.com/co2?callback=?";
-    var newsURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+    var newsURL;
     var image;
     var author;
     var title;
@@ -88,6 +88,7 @@ $(document).ready(function(){
 
     $(document).ready(function(){
         function newsAjax() {
+            newsURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
             newsURL += '?' + $.param({
             'api-key': "bd4a830f78b54849a7803a662f876231",
             'q': search
