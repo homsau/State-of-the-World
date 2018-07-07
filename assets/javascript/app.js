@@ -2,7 +2,7 @@ $(document).ready(function(){
     //Variables: NASA Carbon Dioxide Data
     var carbonData;
     var carbonGraph;
-    var co2URL = "http://www.hqcasanova.com/co2?callback=?";
+    var co2URL = "https://www.hqcasanova.com/co2?callback=?";
     var newsURL;
     var image;
     var author;
