@@ -2,7 +2,7 @@ $(document).ready(function(){
     //Variables: NASA Carbon Dioxide Data
     var carbonData;
     var carbonGraph;
-    var co2URL = "http://www.hqcasanova.com/co2?callback=?";
+    var co2URL = "https://www.hqcasanova.com/co2?callback=?";
     var newsURL;
     var image;
     var author;
@@ -110,7 +110,7 @@ $(document).ready(function(){
     //           STARGAZING ARTICLES             //
     //===========================================//
 
-    $.getJSON('http://allorigins.me/get?url=https%3A//www.nytimes.com/interactive/2018/science/astronomy-space-calendar.html&callback=?', function(data){
+    $.getJSON('https://allorigins.me/get?url=https%3A//www.nytimes.com/interactive/2018/science/astronomy-space-calendar.html&callback=?', function(data){
         //console.log(data.contents);
         var recent = $(data.contents).find('.g-graphic-calendar-item');
         var imgData = $(data.contents).find('img');
