@@ -199,7 +199,31 @@ $(document).ready(function(){
         var timeinterval = setInterval(updateCountdown, 1000);
     }
     
+    // iterate over each element in the deadlineArray
+    for(i = 0; i < deadlineArray.length; i++) {
+        var startDate = deadlineArray[i][0];
+        var endDate = deadlineArray[i][1];
     
+        // put dates in milliseconds for easy comparisons
+        var startMs = Date.parse(startDate);
+        var endMs = Date.parse(endDate);
+        var currentMs = Date.parse(new Date());
+    
+        //if current data is before the start date, count down to it
+        if(currentMs < startMs) {
+            //console.log("Current Time: " + currentMs);
+            //console.log("Upcoming Event[i]: " + i + " Starts: " + startMs + " Ends: " + endMs);
+            //console.log("End date: " + endDate)
+         
+            initializeCountdown('countdown', endDate);
+        }
+        // if current date is between start and end dates, display event message
+        else if(endMs > currentMs && currentMs >= startMs) {
+            //console.log("Event happening: " + i);
+            countdown.innerHTML = "<span>0</span><span>0</span><span>0</span><span>0</span>";
+            $("#spaceCash").text("This event is TODAY!!! Don't miss out!").css("style", "display: block");
+        }
+    }
 
     //When this function is called, it grabs the span elements and gives them the class "turn".
     //This function allows the elements then recieve that class's animations (turning) for 700 milliseconds.
