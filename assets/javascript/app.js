@@ -2,12 +2,34 @@ $(document).ready(function(){
     //Variables: NASA Carbon Dioxide Data
     var carbonData;
     var carbonGraph;
-    var co2URL = "http://www.hqcasanova.com/co2?callback=?";
+    var co2URL = "https://www.hqcasanova.com/co2?callback=?";
     var newsURL;
     var image;
     var author;
     var title;
     var search = "Top News";
+    var i;
+    var t;
+    var deadlineArray = [ 
+        ["Dec 22 2018", "Dec 24 2018"],
+        ["Dec 21 2018", "Dec 22 2018"],
+        ["Dec 14 2018", "Dec 16 2018"],
+        ["Nov 26 2018", "Nov 27 2018"],
+        ["Nov 17 2018", "Nov 19 2018"],
+        ["Oct 21 2018", "Oct 23 2018"],
+        ["Oct 1 2018", "Oct 2 2018"],
+        ["Sept 22 2018", "Sept 23 2018"],
+        ["Sept 12 2018", "Sept 13 2018"],
+        ["Aug 17 2018", "Aug 18 2018"],
+        ["Aug 15 2018", "Aug 16 2018"],
+        ["Aug 12 2018", "Aug 14 2018"],
+        ["Aug 11 2018", "Aug 12 2018"],
+        ["Aug 4 2018", "Aug 5 2018"],
+        ["Jul 30 2018", "Aug 1 2018"],
+        ["Jul 27 2018", "Jul 28 2018"],
+        ["Jul 12 2018", "Jul 14 2018"],
+        ["Jul 6 2018", "Jul 7 2018"]
+    ];
     
     //=====================================================//
     //                        NAVBAR                       //
@@ -177,56 +199,7 @@ $(document).ready(function(){
         var timeinterval = setInterval(updateCountdown, 1000);
     }
     
-    var deadlineArray = [ 
-        ["Dec 22 2018", "Dec 24 2018"],
-        ["Dec 21 2018", "Dec 22 2018"],
-        ["Dec 14 2018", "Dec 16 2018"],
-        ["Nov 26 2018", "Nov 27 2018"],
-        ["Nov 17 2018", "Nov 19 2018"],
-        ["Oct 21 2018", "Oct 23 2018"],
-        ["Oct 1 2018", "Oct 2 2018"],
-        ["Sept 22 2018", "Sept 23 2018"],
-        ["Sept 12 2018", "Sept 13 2018"],
-        ["Aug 17 2018", "Aug 18 2018"],
-        ["Aug 15 2018", "Aug 16 2018"],
-        ["Aug 12 2018", "Aug 14 2018"],
-        ["Aug 11 2018", "Aug 12 2018"],
-        ["Aug 4 2018", "Aug 5 2018"],
-        ["Jul 30 2018", "Aug 1 2018"],
-        ["Jul 27 2018", "Jul 28 2018"],
-        ["Jul 12 2018", "Jul 14 2018"],
-        ["Jul 6 2018", "Jul 7 2018"]
-    ];  
-      
-    var i;
-    var t;
-
-    // iterate over each element in the deadlineArray
-    for(i = 0; i < deadlineArray.length; i++) {
-        var startDate = deadlineArray[i][0];
-        var endDate = deadlineArray[i][1];
     
-        // put dates in milliseconds for easy comparisons
-        var startMs = Date.parse(startDate);
-        var endMs = Date.parse(endDate);
-        var currentMs = Date.parse(new Date());
-    
-        //if current data is before the start date, count down to it
-        if(currentMs < startMs) {
-            //console.log("Current Time: " + currentMs);
-            //console.log("Upcoming Event[i]: " + i + " Starts: " + startMs + " Ends: " + endMs);
-            //console.log("End date: " + endDate)
-         
-            initializeCountdown('countdown', endDate);
-        }
-        // if current date is between start and end dates, display event message
-        else if(endMs > currentMs && currentMs >= startMs) {
-            console.log("Event happening: " + i);
-            countdown.innerHTML = "<span>0</span><span>0</span><span>0</span><span>0</span>";
-            $("#spaceCash").text("This event is TODAY!!! Don't miss out!").css("style", "display: block");
-        }
-    
-    }
 
     //When this function is called, it grabs the span elements and gives them the class "turn".
     //This function allows the elements then recieve that class's animations (turning) for 700 milliseconds.
