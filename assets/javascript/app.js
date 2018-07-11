@@ -2,13 +2,15 @@ $(document).ready(function(){
     //Variables: NASA Carbon Dioxide Data
     var carbonData;
     var carbonGraph;
-    var co2URL = "https://www.hqcasanova.com/co2?callback=?";
+    var co2URL = "http://www.hqcasanova.com/co2?callback=?";
     var newsURL;
+    var spaceEventURL = "https://www.nytimes.com/interactive/2018/science/astronomy-space-calendar.html&callback=?";
     var image;
     var author;
     var title;
     var search = "Top News";
     var i;
+    var j;
     var t;
     var deadlineArray = [ 
         ["Dec 22 2018", "Dec 24 2018"],
@@ -64,8 +66,11 @@ $(document).ready(function(){
         var latest = $("<span>").text(response[0] + " ppm");            
         $("#latest").append(latest);
         
-        var yearly = $("<span>").text(response[10] + " ppm");
+        var yearly = $("<span>").text(response[1] + " ppm");
         $("#yearly").append(yearly);
+
+        var tenYears = $("<span>").text(response[10] + " ppm");
+        $("#tenYears").append(tenYears);
 
     }).fail(function(errorAjax) {
         //console.log("Ajax Error " + errorAjax);
@@ -132,8 +137,10 @@ $(document).ready(function(){
     //           STARGAZING ARTICLES             //
     //===========================================//
 
-    $.getJSON('https://allorigins.me/get?url=https%3A//www.nytimes.com/interactive/2018/science/astronomy-space-calendar.html&callback=?', function(data){
-        //console.log(data.contents);
+    $.getJSON ({
+        url: "https://allorigins.me/get?url=" + spaceEventURL
+    }).then(function(data){
+        // console.log(data.contents);
         var recent = $(data.contents).find('.g-graphic-calendar-item');
         var imgData = $(data.contents).find('img');
         var dateData = $(data.contents).find('h1');
@@ -158,6 +165,8 @@ $(document).ready(function(){
         $("#spaceArticleImage").append(recentSpaceImage);
         $("#spaceArticleText").html(recentSpaceText);
         $("#spaceArticleTitle").append(recentSpace);
+    }).fail(function(errorAjax) {
+        console.log(errorAjax);
     });
    
 
@@ -174,6 +183,7 @@ $(document).ready(function(){
     }
     
     function initializeCountdown(id, endtime){
+        clearInterval(timeinterval);
         var countdown = document.getElementById(id);
         var daysSpan = countdown.querySelector('.days');
         var hoursSpan = countdown.querySelector('.hours');
