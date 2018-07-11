@@ -166,7 +166,7 @@ $(document).ready(function(){
         $("#spaceArticleText").html(recentSpaceText);
         $("#spaceArticleTitle").append(recentSpace);
     }).fail(function(errorAjax) {
-        console.log(errorAjax);
+        //console.log(errorAjax);
     });
    
 
