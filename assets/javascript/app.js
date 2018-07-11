@@ -69,9 +69,6 @@ $(document).ready(function(){
         var yearly = $("<span>").text(response[1] + " ppm");
         $("#yearly").append(yearly);
 
-        var tenYears = $("<span>").text(response[10] + " ppm");
-        $("#tenYears").append(tenYears);
-
     }).fail(function(errorAjax) {
         //console.log("Ajax Error " + errorAjax);
     });
