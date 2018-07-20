@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>ISS Global Positioning API</title>
+</head>
+
+<body>
+
+    <div id="jumbotron">
+        <h2>International Space Station (ISS)</h2>
+        <h3>Global Positioning System</h3>
+        <div id="issMap"></div>
+        <div id="lat"></div>
+        <br>
+        <div id="lon"></div>
+    </div>
+    
+
+<!--jQuery link-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type=text/javascript>
+
+var issURL = "https://open-notify.org/iss-now.json?callback=?api_key=";
+var issKey = "6f63b2c4eaa1188fdb4a13ddfe5d420c";
+
+function moveISS() {
+    $.getJSON(issURL, function(data) {
+        var lat = data["iss_position"]["latitude"];
+        var lon = data["iss_position"]["longitude"];
+
+        //Update the location and map
+        iss.setLatLng([lat, lon]);
+        isscirc.setLatLng([lat, lon]);
+        map.panTo([lat, lon], animate=true);
+
+        $("lat").html("Latitude: " + lat);
+        $("lon").html("Longitude: " + lon);
+
+        console.log("Latitude: " + lat);
+        console.log("Longitude: " + lon);
+    });
+    setTimeout(moveISS, 5000);
+    
+}
+
+</script>
+</body>
+</html>
