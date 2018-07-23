@@ -9,7 +9,6 @@ $(document).ready(function(){
     var author;
     var title;
     var search = "Top News";
-    var newsKey = newsConfig.NEWS_API_KEY;
     var i;
     var j;
     var t;
@@ -81,7 +80,7 @@ $(document).ready(function(){
         function newsAjax() {
             newsURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
             newsURL += '?' + $.param({
-            'api-key': newsKey,
+            'api-key': "bd4a830f78b54849a7803a662f876231",
             'q': search
             });
             $.ajax({
